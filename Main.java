@@ -1,56 +1,22 @@
+import java.util.HashMap;
+
 public class Main {
     public static void main(String[] args) {
-        BinarySearchTree tree = new BinarySearchTree();
+        HashMap<String, Integer> species = new HashMap<>();
 
-        tree.insert(40);
-        tree.insert(20);
-        tree.insert(60);
-        tree.insert(10);
-        tree.insert(30);
+        species.put("Deer", 120);
+        species.put("Fox", 35);
+        species.put("Bear", 12);
+        species.put("Wolf", 25);
+        species.put("Rabbit", 200);
 
-        System.out.println("Archive IDs in order:");
-        tree.display(tree.root);
-        System.out.println();
-    }
-}
+        String name = "Fox";
+        Integer population = species.get(name);
 
-class Node {
-    int id;
-    Node left, right;
-
-    Node(int id) {
-        this.id = id;
-    }
-}
-
-class BinarySearchTree {
-    Node root;
-
-    void insert(int id) {
-        root = add(root, id);
-    }
-
-    Node add(Node node, int id) {
-        if (node == null) {
-            return new Node(id);
-        }
-
-        if (id < node.id) {
-            node.left = add(node.left, id);
-        } else if (id > node.id) {
-            node.right = add(node.right, id);
-        }
-
-        return node;
-    }
-
-    void display(Node node) {
-        if (node != null) {
-            display(node.left);
-            System.out.print(node.id + " ");
-            display(node.right);
+        if (population != null) {
+            System.out.println(name + " population: " + population);
+        } else {
+            System.out.println("Species not found.");
         }
     }
-
-    // Type findMin() here during the recording.
 }
